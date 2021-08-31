@@ -1,11 +1,10 @@
 import Vue from "vue";
 import App from "./App.vue";
 // import store from "./store";
-import { createRouter } from './router'
+import router from './router'
 
 Vue.config.productionTip = false;
 
-const router = createRouter()
 new Vue({
   router,
   // store,
@@ -13,7 +12,6 @@ new Vue({
 }).$mount('#app')
 
 // export function createApp() {
-//   const router = createRouter()
 //   const app = new Vue({
 //     router,
 //     // store,
