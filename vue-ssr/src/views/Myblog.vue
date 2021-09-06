@@ -17,7 +17,8 @@ import { getBlog } from '@/service/api'
 
 export default defineComponent({
   asyncData({ store, route }) {
-    //自定义静态方法 asyncData
+    // 自定义静态方法 asyncData
+    console.log('执行了吗')
     return store.dispatch('getBlogList')
   },
 
@@ -37,7 +38,9 @@ export default defineComponent({
     // getBlogData()
 
     // 使用 vuex 获取接口数据
-    $store.dispatch('getBlogList')
+    if (!$store.state.blogListFromVuex.length) {
+      $store.dispatch('getBlogList')
+    }
     const blogListFromVuex = computed(() => $store.state.blogListFromVuex)
 
     return { blogList, domain, blogListFromVuex }

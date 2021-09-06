@@ -3,7 +3,7 @@
 import axios from 'axios'
 
 const $axios = axios.create({
-  baseURL: '',
+  baseURL: process.env.NODE_ENV === 'development' ? '' : 'https://ainyi.com',
   timeout: 20000
 })
 
