@@ -1,7 +1,7 @@
 <template>
   <div class="blog-container">
     <ul>
-      <li v-for="ele in blogList" :key="ele.id">
+      <li v-for="ele in blogListFromVuex" :key="ele.id">
         <a :href="domain + ele.id" target="_blank">
           <img :src="domain + ele.image" height="200" />
           <p>{{ ele.title }}</p>
@@ -12,10 +12,17 @@
 </template>
 
 <script>
-import { ref, defineComponent } from '@vue/composition-api'
+import { ref, defineComponent, computed } from '@vue/composition-api'
 import { getBlog } from '@/service/api'
+
 export default defineComponent({
+  asyncData({ store, route }) {
+    //自定义静态方法 asyncData
+    return store.dispatch('getBlogList')
+  },
+
   setup(props, ctx) {
+    const $store = ctx.root.$store // @vue/composition-api 使用 vuex（vue2 环境）
     const domain = 'https://ainyi.com/'
     const blogList = ref([])
 
@@ -26,9 +33,14 @@ export default defineComponent({
       })
       blogList.value = result.data
     }
-    getBlogData()
+    // 掉接口获取数据
+    // getBlogData()
 
-    return { blogList, domain }
+    // 使用 vuex 获取接口数据
+    $store.dispatch('getBlogList')
+    const blogListFromVuex = computed(() => $store.state.blogListFromVuex)
+
+    return { blogList, domain, blogListFromVuex }
   }
 })
 </script>
