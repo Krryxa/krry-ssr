@@ -16,9 +16,8 @@ import { ref, defineComponent, computed } from '@vue/composition-api'
 import { getBlog } from '@/service/api'
 
 export default defineComponent({
-  asyncData({ store, route }) {
+  asyncData({ store }) {
     // 自定义静态方法 asyncData
-    console.log('执行了吗')
     return store.dispatch('getBlogList')
   },
 
