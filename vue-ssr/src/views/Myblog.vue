@@ -18,7 +18,7 @@ import { getBlog } from '@/service/api'
 export default defineComponent({
   asyncData({ store }) {
     // 自定义静态方法 asyncData
-    return store.dispatch('getBlogList')
+    return store.dispatch('getBlogList', true)
   },
 
   setup(props, ctx) {

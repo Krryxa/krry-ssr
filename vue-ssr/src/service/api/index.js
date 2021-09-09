@@ -1,5 +1,7 @@
 import axios from '../axios'
 
-export function getBlog(param) {
-  return axios.get('/krryblog/blog/getBlog', {params: param})
+const domain = 'https://ainyi.com'
+
+export function getBlog(param, isServer) {
+  return axios.get(`${isServer ? domain : ''}/krryblog/blog/getBlog`, { params: param })
 }

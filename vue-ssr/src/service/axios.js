@@ -4,7 +4,6 @@ import axios from 'axios'
 import adapter from 'axios/lib/adapters/http'
 
 const $axios = axios.create({
-  baseURL: process.env.NODE_ENV === 'development' ? '' : 'https://ainyi.com',
   timeout: 20000,
   adapter
 })

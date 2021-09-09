@@ -13,13 +13,11 @@ const getters = {
 }
 
 const actions = {
-  async getBlogList(store) {
-    console.log('开始发起请求')
+  async getBlogList(store, isServer) {
     const { result } = await getBlog({
       pageNo: 3,
       pageSize: 16
-    })
-    console.log('请求发送完毕')
+    }, isServer)
     store.commit('setBlogList', result.data)
   }
 }
