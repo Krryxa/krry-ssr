@@ -9,7 +9,7 @@ module.exports = merge(base, {
   output: {
     path: path.join(__dirname, '../dist'),
     filename: 'bundle.server.js',
-    libraryTarget: 'commonjs2'
+    libraryTarget: 'commonjs2' // 使用 Node 风格导出模块(Node-style exports)
   },
   plugins: [
     // new VueSSRServerPlugin()

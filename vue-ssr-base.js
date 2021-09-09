@@ -1,31 +1,19 @@
 const Vue = require('vue')
 const server = require('express')()
-
 const template = require('fs').readFileSync('./index.template.html', { encoding: 'utf-8' })
-
 const renderer = require('vue-server-renderer').createRenderer({
-  template,
-});
-
-const context = {
-    title: 'vue ssr',
-    meta: `
-        <meta name="keyword" content="vue,ssr">
-        <meta name="description" content="vue srr demo">
-    `,
-}
+  template
+})
 
 server.get('*', (req, res) => {
   const app = new Vue({
     data: {
       url: req.url
     },
-    template: `<div>访问的 URL 是： {{ url }}</div>`,
+    template: `<div>Hello Word！你的访问路由是：{{ url }}</div>`,
   })
-
   renderer
-  .renderToString(app, context, (err, html) => {
-    console.log(html);
+  .renderToString(app, (err, html) => {
     if (err) {
       res.status(500).end('Internal Server Error')
       return
@@ -34,4 +22,6 @@ server.get('*', (req, res) => {
   })
 })
 
-server.listen(3002);
+server.listen(3000, () => {
+  console.log('server is listening in 3000')
+})
