@@ -3,7 +3,7 @@
     <ul>
       <li v-for="ele in blogListFromVuex" :key="ele.id">
         <a :href="domain + ele.id" target="_blank">
-          <img :src="domain + ele.image" height="200" />
+          <img :src="domain + ele.image" height="160" />
           <p>{{ ele.title }}</p>
         </a>
       </li>
@@ -55,7 +55,7 @@ export default defineComponent({
     li {
       list-style: none;
       text-align: left;
-      width: 243px;
+      width: 194.8px;
       margin: 20px;
 
       a {
@@ -72,6 +72,8 @@ export default defineComponent({
           overflow: hidden;
           text-overflow: ellipsis;
           white-space: nowrap;
+          margin-top: 10px;
+          font-size: 14px;
         }
       }
     }
