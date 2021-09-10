@@ -15,8 +15,8 @@ const getters = {
 const actions = {
   async getBlogList(store, isServer) {
     const { result } = await getBlog({
-      pageNo: 3,
-      pageSize: 16
+      pageNo: 2,
+      pageSize: 20
     }, isServer)
     store.commit('setBlogList', result.data)
   }
