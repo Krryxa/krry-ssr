@@ -11,10 +11,9 @@ const renderer = require('vue-server-renderer').createRenderer({
 const app = require('./dist/bundle.server.js').default // 导入 Vue 实例工厂函数
 
 server.use(express.static('./dist')); // 设置静态目录
-server.use('/krryblog', createProxyMiddleware({ // 解决客户端访问跨域问题
+server.use('/blog', createProxyMiddleware({ // 解决客户端访问跨域问题
 	target: 'https://ainyi.com',
-	changeOrigin: true,
-  pathRewrite: {'^/krryblog' : ''}
+	changeOrigin: true
 }));
 
 server.get('*', async (req, res) => {

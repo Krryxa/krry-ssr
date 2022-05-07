@@ -18,11 +18,11 @@ module.exports = merge(base, {
     historyApiFallback: true,
     port: 3003,
     proxy: {
-      '/krryblog': {
+      '/blog': {
         target: 'https://ainyi.com',  // 目标接口域名
         changeOrigin: true,  // 是否跨域
         secure: true,  // 如果是https接口，需要配置这个参数
-        pathRewrite: {'^/krryblog' : ''}
+        // pathRewrite: {'^/krryblog' : ''}
       }
     }
   },
